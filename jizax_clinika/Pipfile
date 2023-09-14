@@ -11,6 +11,7 @@ django-allauth = "*"
 dj-rest-auth = {version = "*", extras = ["with_social"]}
 django-filter = "*"
 djangorestframework-simplejwt = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 
