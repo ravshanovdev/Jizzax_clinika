@@ -1,4 +1,4 @@
-from .serizalizers import CategorySerializer, BodySerializer
+from .serializers import CategorySerializer, BodySerializer
 from .models import Category, Blog
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveDestroyAPIView, \
     RetrieveUpdateAPIView, RetrieveAPIView
@@ -9,7 +9,6 @@ from django_filters.rest_framework import DjangoFilterBackend
 from django.contrib.auth.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.views import Response
-from django.db.models import Q
 
 
 class CategoryAPiView(ListAPIView):
@@ -35,7 +34,7 @@ class BodyApiView(ListAPIView):
     serializer_class = BodySerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
     filterset_fields = ['id', 'name', 'body']
-    search_fields = ['body']
+    search_fields = ['body', "name"]
 
 
 class AddBlogPostAPiView(CreateAPIView):
@@ -63,19 +62,21 @@ class DetailBlogApiView(RetrieveAPIView):
 
 
 # ro'yxatdan o'tish uchun yozilgan view
+
+
 class RegistrationApiView(APIView):
 
     def post(self, request):
         username = request.data["username"]
-
         password = request.data['password']
-        user = User(username=username)
+
+        user = User(username=username, )
 
         user.set_password(password)
-
-        user.save()
         print(username)
         print(password)
+
+        user.save()
 
         refresh = RefreshToken.for_user(user)
 
@@ -83,7 +84,11 @@ class RegistrationApiView(APIView):
             {
                 'status': 'success',
                 'user_id': user.id,
+
                 'refresh': str(refresh),
                 'access': str(refresh.access_token)
             }
         )
+
+
+

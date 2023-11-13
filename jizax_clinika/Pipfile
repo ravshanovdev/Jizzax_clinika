@@ -4,6 +4,9 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+django-suit = "*"
+django-grappelli = "*"
+django-jazzmin = "*"
 
 [dev-packages]
 

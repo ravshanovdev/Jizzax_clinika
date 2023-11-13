@@ -17,6 +17,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
 
+
 ]
 
 SITE_ID = 1
@@ -47,13 +49,16 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ]
 }
-
-from datetime import timedelta
+import requests
+from datetime import timedelta, datetime
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=3),
+
     # Qolgan sozlamalar
 }
+
+
 
 # bu yerda backend qo'yilgan domain va frontend qo'yilgan domain yoziladi
 CORS_ALLOWED_ORIGINS = [
