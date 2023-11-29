@@ -9,7 +9,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from django.contrib.auth.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.views import Response
-
+from django.views.decorators.cache import cache_page
 
 class CategoryAPiView(ListAPIView):
     queryset = Category.objects.all()

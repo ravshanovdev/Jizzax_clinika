@@ -7,6 +7,7 @@ name = "pypi"
 django-suit = "*"
 django-grappelli = "*"
 django-jazzmin = "*"
+python-memcached = "*"
 
 [dev-packages]
 
